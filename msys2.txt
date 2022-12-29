@@ -1,0 +1,500 @@
+https://www.msys2.org/
+MSYS2 is a collection of tools and libraries providing you with an easy-to-use environment for building, installing and running native Windows software.
+
+https://wiki.archlinux.org/title/pacman
+#### pacman: Package Manager
+# pacman -h
+usage:  pacman <operation> [...]
+operations:
+    pacman {-h --help}
+    pacman {-V --version}
+    pacman {-D --database} <options> <package(s)>
+    pacman {-F --files}    [options] [file(s)]
+    pacman {-Q --query}    [options] [package(s)]
+    pacman {-R --remove}   [options] <package(s)>
+    pacman {-S --sync}     [options] [package(s)]
+    pacman {-T --deptest}  [options] [package(s)]
+    pacman {-U --upgrade}  [options] <file(s)>
+
+use 'pacman {-h --help}' with an operation for available options
+
+# pacman -h -S
+usage:  pacman {-S --sync} [options] [package(s)]
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -c, --clean          remove old packages from cache directory (-cc for all)
+  -d, --nodeps         skip dependency version checks (-dd to skip all checks)
+  -g, --groups         view all members of a package group
+                       (-gg to view all groups and members)
+  -i, --info           view package information (-ii for extended information)
+  -l, --list <repo>    view a list of packages in a repo
+  -p, --print          print the targets instead of performing the operation
+  -q, --quiet          show less information for query and search
+  -r, --root <path>    set an alternate installation root
+  -s, --search <regex> search remote repositories for matching strings
+  -u, --sysupgrade     upgrade installed packages (-uu enables downgrades)
+  -v, --verbose        be verbose
+  -w, --downloadonly   download packages but do not install/upgrade anything
+  -y, --refresh        download fresh package databases from the server
+                       (-yy to force a refresh even if up to date)
+      --arch <arch>    set an alternate architecture
+      --asdeps         install packages as non-explicitly installed
+      --asexplicit     install packages as explicitly installed
+      --assume-installed <package=version>
+                       add a virtual package to satisfy dependencies
+      --cachedir <dir> set an alternate package cache location
+      --color <when>   colorize the output
+      --config <path>  set an alternate configuration file
+      --confirm        always ask for confirmation
+      --dbonly         only modify database entries, not package files
+      --debug          display debug messages
+      --disable-download-timeout
+                       use relaxed timeouts for download
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --hookdir <dir>  set an alternate hook location
+      --ignore <pkg>   ignore a package upgrade (can be used more than once)
+      --ignoregroup <grp>
+                       ignore a group upgrade (can be used more than once)
+      --logfile <path> set an alternate log file
+      --needed         do not reinstall up to date packages
+      --noconfirm      do not ask for any confirmation
+      --noprogressbar  do not show a progress bar when downloading files
+      --noscriptlet    do not execute the install scriptlet if one exists
+      --overwrite <glob>
+                       overwrite conflicting files (can be used more than once)
+      --print-format <string>
+                       specify how the targets should be printed
+      --sysroot        operate on a mounted guest system (root-only)
+
+
+# pacman -S -l | grep gcc
+mingw32 mingw-w64-i686-avr-gcc 12.2.0-1
+mingw32 mingw-w64-i686-gcc 12.2.0-6
+mingw32 mingw-w64-i686-gcc-ada 12.2.0-6
+mingw32 mingw-w64-i686-gcc-fortran 12.2.0-6
+mingw32 mingw-w64-i686-gcc-libgfortran 12.2.0-6
+mingw32 mingw-w64-i686-gcc-libs 12.2.0-6
+mingw32 mingw-w64-i686-gcc-objc 12.2.0-6
+mingw32 mingw-w64-i686-libgccjit 12.2.0-6
+mingw32 mingw-w64-i686-riscv64-unknown-elf-gcc 12.2.0-2
+mingw64 mingw-w64-x86_64-arm-none-eabi-gcc 12.2.0-1
+mingw64 mingw-w64-x86_64-avr-gcc 12.2.0-1
+mingw64 mingw-w64-x86_64-gcc 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-gcc-ada 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-gcc-fortran 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-gcc-libgfortran 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-gcc-libs 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-gcc-objc 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-libgccjit 12.2.0-6 [installed]
+mingw64 mingw-w64-x86_64-riscv64-unknown-elf-gcc 12.2.0-2
+ucrt64 mingw-w64-ucrt-x86_64-arm-none-eabi-gcc 12.2.0-1
+ucrt64 mingw-w64-ucrt-x86_64-avr-gcc 12.2.0-1
+ucrt64 mingw-w64-ucrt-x86_64-gcc 12.2.0-6 [installed]
+ucrt64 mingw-w64-ucrt-x86_64-gcc-ada 12.2.0-6
+ucrt64 mingw-w64-ucrt-x86_64-gcc-fortran 12.2.0-6
+ucrt64 mingw-w64-ucrt-x86_64-gcc-libgfortran 12.2.0-6
+ucrt64 mingw-w64-ucrt-x86_64-gcc-libs 12.2.0-6 [installed]
+ucrt64 mingw-w64-ucrt-x86_64-gcc-objc 12.2.0-6
+ucrt64 mingw-w64-ucrt-x86_64-libgccjit 12.2.0-6
+ucrt64 mingw-w64-ucrt-x86_64-riscv64-unknown-elf-gcc 12.2.0-2
+clang32 mingw-w64-clang-i686-gcc-compat 15.0.5-1
+clang32 mingw-w64-clang-i686-riscv64-unknown-elf-gcc 12.2.0-2
+clang64 mingw-w64-clang-x86_64-arm-none-eabi-gcc 12.2.0-1
+clang64 mingw-w64-clang-x86_64-avr-gcc 12.2.0-1
+clang64 mingw-w64-clang-x86_64-gcc-compat 15.0.5-1
+clang64 mingw-w64-clang-x86_64-riscv64-unknown-elf-gcc 12.2.0-2
+msys gcc 11.3.0-2
+msys gcc-fortran 11.3.0-2
+msys gcc-libs 11.3.0-2 [installed]
+msys mingw-w64-cross-gcc 10.2.0-2
+
+
+#### Installer msys2-x86_64-20221216.exe
+
+#### Start the UCRT64 shell: C:\msys64\mingw64.exe
+#### UCRT: Universal C Runtime
+# echo $PATH
+/ucrt64/bin:/usr/local/bin:/usr/bin:/bin:/c/Windows/System32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0/:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+#### Install mingw-w64 UCRT GCC
+# pacman -S mingw-w64-ucrt-x86_64-gcc
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (15) mingw-w64-ucrt-x86_64-binutils-2.39-2
+              mingw-w64-ucrt-x86_64-crt-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-ucrt-x86_64-gcc-libs-12.2.0-6  mingw-w64-ucrt-x86_64-gmp-6.2.1-3
+              mingw-w64-ucrt-x86_64-headers-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-ucrt-x86_64-isl-0.25-1  mingw-w64-ucrt-x86_64-libiconv-1.17-1
+              mingw-w64-ucrt-x86_64-libwinpthread-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-ucrt-x86_64-mpc-1.3.0-2  mingw-w64-ucrt-x86_64-mpfr-4.1.1.p1-1
+              mingw-w64-ucrt-x86_64-windows-default-manifest-6.4-4
+              mingw-w64-ucrt-x86_64-winpthreads-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-ucrt-x86_64-zlib-1.2.13-2  mingw-w64-ucrt-x86_64-zstd-1.5.2-2
+              mingw-w64-ucrt-x86_64-gcc-12.2.0-6
+
+Total Download Size:    47.55 MiB
+Total Installed Size:  398.38 MiB
+
+:: Proceed with installation? [Y/n] Y
+:: Retrieving packages...
+ mingw-w64-ucrt-x86_64-isl-...  1386.1 KiB   323 KiB/s 00:04 [###############################] 100%
+ mingw-w64-ucrt-x86_64-head...     5.6 MiB   824 KiB/s 00:07 [###############################] 100%
+ mingw-w64-ucrt-x86_64-crt-...     3.3 MiB   456 KiB/s 00:07 [###############################] 100%
+ mingw-w64-ucrt-x86_64-gcc-...   878.2 KiB   278 KiB/s 00:03 [###############################] 100%
+ mingw-w64-ucrt-x86_64-libi...   717.2 KiB   350 KiB/s 00:02 [###############################] 100%
+ mingw-w64-ucrt-x86_64-gmp-...   558.6 KiB   288 KiB/s 00:02 [###############################] 100%
+ mingw-w64-ucrt-x86_64-zstd...   495.4 KiB   238 KiB/s 00:02 [###############################] 100%
+ mingw-w64-ucrt-x86_64-zlib...    92.3 KiB  39.9 KiB/s 00:02 [###############################] 100%
+ mingw-w64-ucrt-x86_64-mpfr...   368.5 KiB   116 KiB/s 00:03 [###############################] 100%
+ mingw-w64-ucrt-x86_64-mpc-...    89.7 KiB  51.7 KiB/s 00:02 [###############################] 100%
+ mingw-w64-ucrt-x86_64-libw...    30.0 KiB  44.7 KiB/s 00:01 [###############################] 100%
+ mingw-w64-ucrt-x86_64-wind...     3.0 KiB  5.03 KiB/s 00:01 [###############################] 100%
+ mingw-w64-ucrt-x86_64-winp...    40.3 KiB  45.2 KiB/s 00:01 [###############################] 100%
+ mingw-w64-ucrt-x86_64-binu...     5.8 MiB   252 KiB/s 00:24 [###############################] 100%
+ mingw-w64-ucrt-x86_64-gcc-...    28.3 MiB  1050 KiB/s 00:28 [###############################] 100%
+ Total (15/15)                    47.5 MiB  1718 KiB/s 00:28 [###############################] 100%
+(15/15) checking keys in keyring                             [###############################] 100%
+(15/15) checking package integrity                           [###############################] 100%
+(15/15) loading package files                                [###############################] 100%
+(15/15) checking for file conflicts                          [###############################] 100%
+(15/15) checking available disk space                        [###############################] 100%
+:: Processing package changes...
+( 1/15) installing mingw-w64-ucrt-x86_64-libiconv            [###############################] 100%
+( 2/15) installing mingw-w64-ucrt-x86_64-zlib                [###############################] 100%
+( 3/15) installing mingw-w64-ucrt-x86_64-binutils            [###############################] 100%
+( 4/15) installing mingw-w64-ucrt-x86_64-headers-git         [###############################] 100%
+( 5/15) installing mingw-w64-ucrt-x86_64-crt-git             [###############################] 100%
+( 6/15) installing mingw-w64-ucrt-x86_64-gmp                 [###############################] 100%
+( 7/15) installing mingw-w64-ucrt-x86_64-isl                 [###############################] 100%
+( 8/15) installing mingw-w64-ucrt-x86_64-mpfr                [###############################] 100%
+( 9/15) installing mingw-w64-ucrt-x86_64-mpc                 [###############################] 100%
+(10/15) installing mingw-w64-ucrt-x86_64-libwinpthread-git   [###############################] 100%
+(11/15) installing mingw-w64-ucrt-x86_64-gcc-libs            [###############################] 100%
+(12/15) installing mingw-w64-ucrt-x86_64-windows-default...  [###############################] 100%
+(13/15) installing mingw-w64-ucrt-x86_64-winpthreads-git     [###############################] 100%
+(14/15) installing mingw-w64-ucrt-x86_64-zstd                [###############################] 100%
+(15/15) installing mingw-w64-ucrt-x86_64-gcc                 [###############################] 100%
+
+#### Windows C:\msys64\ucrt64\bin
+# ls /ucrt64/bin
+addr2line.exe   gcc.exe             libquadmath-0.dll    windmc.exe
+ar.exe          gcov-tool.exe       libssp-0.dll         windres.exe
+as.exe          gcov.exe            libstdc++-6.dll      x86_64-w64-mingw32-c++.exe
+c++.exe         gprof.exe           libwinpthread-1.dll  x86_64-w64-mingw32-cc.exe
+c++filt.exe     ld.bfd.exe          libzstd.dll          x86_64-w64-mingw32-g++.exe
+cc.exe          ld.exe              nm.exe               x86_64-w64-mingw32-gcc-12.2.0.exe
+cpp.exe         libatomic-1.dll     objcopy.exe          x86_64-w64-mingw32-gcc-ar.exe
+dlltool.exe     libcharset-1.dll    objdump.exe          x86_64-w64-mingw32-gcc-nm.exe
+dllwrap.exe     libgcc_s_seh-1.dll  pzstd.exe            x86_64-w64-mingw32-gcc-ranlib.exe
+elfedit.exe     libgmp-10.dll       ranlib.exe           x86_64-w64-mingw32-gcc.exe
+g++.exe         libgmpxx-4.dll      readelf.exe          zlib1.dll
+gcc-ar.exe      libgomp-1.dll       size.exe             zstd.exe
+gcc-nm.exe      libiconv-2.dll      strings.exe
+gcc-ranlib.exe  libisl-23.dll       strip.exe
+
+# /ucrt64/bin/gcc --version
+gcc.exe (Rev6, Built by MSYS2 project) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# /ucrt64/bin/g++ --version
+g++.exe (Rev6, Built by MSYS2 project) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+
+#### Start the MinGW-W64 shell: C:\msys64\mingw64.exe
+#### MinGW:     Minimalist GNU for Windows
+#### Mingw-w64: 64 bit
+# echo $PATH
+/mingw64/bin:/usr/local/bin:/usr/bin:/bin:/c/Windows/System32:/c/Windows:/c/Windows/System32/Wbem:/c/Windows/System32/WindowsPowerShell/v1.0/:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+# pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+:: There are 19 members in group mingw-w64-x86_64-toolchain:
+:: Repository mingw64
+   1) mingw-w64-x86_64-binutils  2) mingw-w64-x86_64-crt-git  3) mingw-w64-x86_64-gcc
+   4) mingw-w64-x86_64-gcc-ada  5) mingw-w64-x86_64-gcc-fortran
+   6) mingw-w64-x86_64-gcc-libgfortran  7) mingw-w64-x86_64-gcc-libs  8) mingw-w64-x86_64-gcc-objc
+   9) mingw-w64-x86_64-gdb  10) mingw-w64-x86_64-gdb-multiarch  11) mingw-w64-x86_64-headers-git
+   12) mingw-w64-x86_64-libgccjit  13) mingw-w64-x86_64-libmangle-git
+   14) mingw-w64-x86_64-libwinpthread-git  15) mingw-w64-x86_64-make  16) mingw-w64-x86_64-pkgconf
+   17) mingw-w64-x86_64-tools-git  18) mingw-w64-x86_64-winpthreads-git
+   19) mingw-w64-x86_64-winstorecompat-git
+
+Enter a selection (default=all):
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (63) binutils-2.39-2  bison-3.8.2-4  diffstat-1.65-1  diffutils-3.8-4  dos2unix-7.4.3-1
+              flex-2.6.4-3  gperf-3.1-5  groff-1.22.4-4  m4-1.4.19-2  make-4.4-1
+              mingw-w64-x86_64-bzip2-1.0.8-2  mingw-w64-x86_64-ca-certificates-20211016-3
+              mingw-w64-x86_64-expat-2.5.0-1  mingw-w64-x86_64-gettext-0.21-3
+              mingw-w64-x86_64-gmp-6.2.1-3  mingw-w64-x86_64-isl-0.25-1
+              mingw-w64-x86_64-libffi-3.4.4-1  mingw-w64-x86_64-libiconv-1.17-1
+              mingw-w64-x86_64-libsystre-1.0.1-4  mingw-w64-x86_64-libtasn1-4.19.0-1
+              mingw-w64-x86_64-libtre-git-r128.6fb7206-2  mingw-w64-x86_64-mpc-1.3.0-2
+              mingw-w64-x86_64-mpdecimal-2.5.1-1  mingw-w64-x86_64-mpfr-4.1.1.p1-1
+              mingw-w64-x86_64-ncurses-6.3-6  mingw-w64-x86_64-openssl-1.1.1.s-1
+              mingw-w64-x86_64-p11-kit-0.24.1-3  mingw-w64-x86_64-python-3.10.9-1
+              mingw-w64-x86_64-readline-8.2.001-5  mingw-w64-x86_64-sqlite3-3.40.0-1
+              mingw-w64-x86_64-tcl-8.6.12-1  mingw-w64-x86_64-termcap-1.3.1-6
+              mingw-w64-x86_64-tk-8.6.12-1  mingw-w64-x86_64-tzdata-2022g-1
+              mingw-w64-x86_64-windows-default-manifest-6.4-4  mingw-w64-x86_64-xxhash-0.8.1-2
+              mingw-w64-x86_64-xz-5.2.9-1  mingw-w64-x86_64-zlib-1.2.13-2
+              mingw-w64-x86_64-zstd-1.5.2-2  patch-2.7.6-2  pkgconf-1.8.0-2  texinfo-7.0.1-1
+              texinfo-tex-7.0.1-1  base-devel-2022.01-2  mingw-w64-x86_64-binutils-2.39-2
+              mingw-w64-x86_64-crt-git-10.0.0.r157.gd295924f0-1  mingw-w64-x86_64-gcc-12.2.0-6
+              mingw-w64-x86_64-gcc-ada-12.2.0-6  mingw-w64-x86_64-gcc-fortran-12.2.0-6
+              mingw-w64-x86_64-gcc-libgfortran-12.2.0-6  mingw-w64-x86_64-gcc-libs-12.2.0-6
+              mingw-w64-x86_64-gcc-objc-12.2.0-6  mingw-w64-x86_64-gdb-12.1-5
+              mingw-w64-x86_64-gdb-multiarch-12.1-5
+              mingw-w64-x86_64-headers-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-x86_64-libgccjit-12.2.0-6
+              mingw-w64-x86_64-libmangle-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-x86_64-libwinpthread-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-x86_64-make-4.4-2  mingw-w64-x86_64-pkgconf-1~1.8.0-2
+              mingw-w64-x86_64-tools-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-x86_64-winpthreads-git-10.0.0.r157.gd295924f0-1
+              mingw-w64-x86_64-winstorecompat-git-10.0.0.r157.gd295924f0-1
+
+Total Download Size:    162.41 MiB
+Total Installed Size:  1055.24 MiB
+
+:: Proceed with installation? [Y/n] Y
+:: Retrieving packages...
+ mingw-w64-x86_64-python-3....    18.4 MiB  2.86 MiB/s 00:06 [###############################] 100%
+ mingw-w64-x86_64-gcc-fortr...    11.1 MiB  1030 KiB/s 00:11 [###############################] 100%
+ mingw-w64-x86_64-gcc-12.2....    28.3 MiB  2.13 MiB/s 00:13 [###############################] 100%
+ mingw-w64-x86_64-gdb-multi...     6.6 MiB  1710 KiB/s 00:04 [###############################] 100%
+ mingw-w64-x86_64-binutils-...     5.9 MiB  3.33 MiB/s 00:02 [###############################] 100%
+ binutils-2.39-2-x86_64            5.2 MiB  2.70 MiB/s 00:02 [###############################] 100%
+ mingw-w64-x86_64-gcc-ada-1...    20.3 MiB  1171 KiB/s 00:18 [###############################] 100%
+ mingw-w64-x86_64-openssl-1...     4.8 MiB  3.04 MiB/s 00:02 [###############################] 100%
+ mingw-w64-x86_64-crt-git-1...     3.3 MiB  3.14 MiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-gdb-12.1-...     4.3 MiB  1829 KiB/s 00:02 [###############################] 100%
+ mingw-w64-x86_64-gettext-0...     3.1 MiB  5.18 MiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-tcl-8.6.1...     2.6 MiB  2.97 MiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-tk-8.6.12...  1987.0 KiB  3.19 MiB/s 00:01 [###############################] 100%
+ groff-1.22.4-4-x86_64             2.0 MiB   242 KiB/s 00:08 [###############################] 100%
+ mingw-w64-x86_64-ncurses-6...  1780.3 KiB   205 KiB/s 00:09 [###############################] 100%
+ mingw-w64-x86_64-sqlite3-3...  1436.1 KiB  1802 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-isl-0.25-...  1396.6 KiB   577 KiB/s 00:02 [###############################] 100%
+ texinfo-7.0.1-1-x86_64         1323.1 KiB  1435 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-gcc-libs-...   876.7 KiB  1336 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-gcc-libgf...   853.0 KiB   895 KiB/s 00:01 [###############################] 100%
+ bison-3.8.2-4-x86_64            778.1 KiB   278 KiB/s 00:03 [###############################] 100%
+ mingw-w64-x86_64-gmp-6.2.1...   558.6 KiB  1117 KiB/s 00:01 [###############################] 100%
+ make-4.4-1-x86_64               501.7 KiB   765 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-libiconv-...   720.2 KiB   169 KiB/s 00:04 [###############################] 100%
+ mingw-w64-x86_64-xz-5.2.9-...   439.7 KiB   352 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-readline-...   410.7 KiB   796 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-headers-g...     5.6 MiB   218 KiB/s 00:26 [###############################] 100%
+ mingw-w64-x86_64-zstd-1.5....   494.9 KiB   168 KiB/s 00:03 [###############################] 100%
+ mingw-w64-x86_64-gcc-objc-...    12.9 MiB   304 KiB/s 00:43 [###############################] 100%
+ diffutils-3.8-4-x86_64          363.9 KiB   409 KiB/s 00:01 [###############################] 100%
+ dos2unix-7.4.3-1-x86_64         369.6 KiB   209 KiB/s 00:02 [###############################] 100%
+ mingw-w64-x86_64-mpfr-4.1....   367.9 KiB   226 KiB/s 00:02 [###############################] 100%
+ mingw-w64-x86_64-p11-kit-0...   345.2 KiB   738 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-mpdecimal...   321.9 KiB   894 KiB/s 00:00 [###############################] 100%
+ flex-2.6.4-3-x86_64             303.8 KiB   974 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-ca-certif...   330.7 KiB   378 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-libtasn1-...   189.7 KiB  87.4 KiB/s 00:02 [###############################] 100%
+ m4-1.4.19-2-x86_64              238.1 KiB   101 KiB/s 00:02 [###############################] 100%
+ mingw-w64-x86_64-tzdata-20...   227.8 KiB  88.9 KiB/s 00:03 [###############################] 100%
+ mingw-w64-x86_64-tools-git...   315.0 KiB   100 KiB/s 00:03 [###############################] 100%
+ mingw-w64-x86_64-libgccjit...    10.3 MiB   259 KiB/s 00:41 [###############################] 100%
+ mingw-w64-x86_64-expat-2.5...   155.8 KiB   453 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-xxhash-0....   106.1 KiB   340 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-zlib-1.2....   103.7 KiB   201 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-make-4.4-...   135.1 KiB   180 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-mpc-1.3.0...    89.2 KiB   102 KiB/s 00:01 [###############################] 100%
+ gperf-3.1-5-x86_64              101.8 KiB  95.8 KiB/s 00:01 [###############################] 100%
+ patch-2.7.6-2-x86_64             96.8 KiB  98.3 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-bzip2-1.0...    89.1 KiB   110 KiB/s 00:01 [###############################] 100%
+ mingw-w64-x86_64-pkgconf-1...    79.1 KiB   390 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-libtre-gi...    84.2 KiB   186 KiB/s 00:00 [###############################] 100%
+ pkgconf-1.8.0-2-x86_64           58.6 KiB   208 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-libffi-3....    42.5 KiB   109 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-winpthrea...    40.0 KiB   107 KiB/s 00:00 [###############################] 100%
+ diffstat-1.65-1-x86_64           29.2 KiB   125 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-libwinpth...    29.0 KiB   124 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-termcap-1...    28.0 KiB   150 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-libsystre...    24.0 KiB  95.9 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-libmangle...    22.3 KiB  75.2 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-winstorec...    21.1 KiB  89.8 KiB/s 00:00 [###############################] 100%
+ mingw-w64-x86_64-windows-d...     3.1 KiB  11.8 KiB/s 00:00 [###############################] 100%
+ texinfo-tex-7.0.1-1-x86_64       26.6 KiB  55.0 KiB/s 00:00 [###############################] 100%
+ base-devel-2022.01-2-any          2.4 KiB  10.4 KiB/s 00:00 [###############################] 100%
+ Total (63/63)                   162.4 MiB  3.03 MiB/s 00:54 [###############################] 100%
+(63/63) checking keys in keyring                             [###############################] 100%
+(63/63) checking package integrity                           [###############################] 100%
+(63/63) loading package files                                [###############################] 100%
+(63/63) checking for file conflicts                          [###############################] 100%
+(63/63) checking available disk space                        [###############################] 100%
+:: Processing package changes...
+( 1/63) installing binutils                                  [###############################] 100%
+( 2/63) installing m4                                        [###############################] 100%
+( 3/63) installing bison                                     [###############################] 100%
+( 4/63) installing diffstat                                  [###############################] 100%
+( 5/63) installing diffutils                                 [###############################] 100%
+( 6/63) installing dos2unix                                  [###############################] 100%
+( 7/63) installing flex                                      [###############################] 100%
+( 8/63) installing gperf                                     [###############################] 100%
+( 9/63) installing groff                                     [###############################] 100%
+(10/63) installing texinfo                                   [###############################] 100%
+(11/63) installing texinfo-tex                               [###############################] 100%
+(12/63) installing make                                      [###############################] 100%
+(13/63) installing patch                                     [###############################] 100%
+Optional dependencies for patch
+    ed: for patch -e functionality
+(14/63) installing pkgconf                                   [###############################] 100%
+(15/63) installing base-devel                                [###############################] 100%
+(16/63) installing mingw-w64-x86_64-libiconv                 [###############################] 100%
+(17/63) installing mingw-w64-x86_64-zlib                     [###############################] 100%
+(18/63) installing mingw-w64-x86_64-binutils                 [###############################] 100%
+(19/63) installing mingw-w64-x86_64-headers-git              [###############################] 100%
+(20/63) installing mingw-w64-x86_64-crt-git                  [###############################] 100%
+(21/63) installing mingw-w64-x86_64-gmp                      [###############################] 100%
+(22/63) installing mingw-w64-x86_64-isl                      [###############################] 100%
+(23/63) installing mingw-w64-x86_64-mpfr                     [###############################] 100%
+(24/63) installing mingw-w64-x86_64-mpc                      [###############################] 100%
+(25/63) installing mingw-w64-x86_64-libwinpthread-git        [###############################] 100%
+(26/63) installing mingw-w64-x86_64-gcc-libs                 [###############################] 100%
+(27/63) installing mingw-w64-x86_64-windows-default-manifest [###############################] 100%
+(28/63) installing mingw-w64-x86_64-winpthreads-git          [###############################] 100%
+(29/63) installing mingw-w64-x86_64-zstd                     [###############################] 100%
+(30/63) installing mingw-w64-x86_64-gcc                      [###############################] 100%
+(31/63) installing mingw-w64-x86_64-gcc-ada                  [###############################] 100%
+(32/63) installing mingw-w64-x86_64-gcc-libgfortran          [###############################] 100%
+(33/63) installing mingw-w64-x86_64-gcc-fortran              [###############################] 100%
+(34/63) installing mingw-w64-x86_64-gcc-objc                 [###############################] 100%
+(35/63) installing mingw-w64-x86_64-expat                    [###############################] 100%
+(36/63) installing mingw-w64-x86_64-gettext                  [###############################] 100%
+(37/63) installing mingw-w64-x86_64-libtre-git               [###############################] 100%
+(38/63) installing mingw-w64-x86_64-libsystre                [###############################] 100%
+(39/63) installing mingw-w64-x86_64-ncurses                  [###############################] 100%
+(40/63) installing mingw-w64-x86_64-bzip2                    [###############################] 100%
+(41/63) installing mingw-w64-x86_64-libffi                   [###############################] 100%
+(42/63) installing mingw-w64-x86_64-mpdecimal                [###############################] 100%
+(43/63) installing mingw-w64-x86_64-libtasn1                 [###############################] 100%
+(44/63) installing mingw-w64-x86_64-p11-kit                  [###############################] 100%
+(45/63) installing mingw-w64-x86_64-ca-certificates          [###############################] 100%
+(46/63) installing mingw-w64-x86_64-openssl                  [###############################] 100%
+(47/63) installing mingw-w64-x86_64-termcap                  [###############################] 100%
+(48/63) installing mingw-w64-x86_64-readline                 [###############################] 100%
+(49/63) installing mingw-w64-x86_64-tcl                      [###############################] 100%
+(50/63) installing mingw-w64-x86_64-sqlite3                  [###############################] 100%
+(51/63) installing mingw-w64-x86_64-tk                       [###############################] 100%
+(52/63) installing mingw-w64-x86_64-xz                       [###############################] 100%
+(53/63) installing mingw-w64-x86_64-tzdata                   [###############################] 100%
+(54/63) installing mingw-w64-x86_64-python                   [###############################] 100%
+(55/63) installing mingw-w64-x86_64-xxhash                   [###############################] 100%
+(56/63) installing mingw-w64-x86_64-gdb                      [###############################] 100%
+Optional dependencies for mingw-w64-x86_64-gdb
+    mingw-w64-x86_64-python-pygments: for syntax highlighting
+(57/63) installing mingw-w64-x86_64-gdb-multiarch            [###############################] 100%
+Optional dependencies for mingw-w64-x86_64-gdb-multiarch
+    mingw-w64-x86_64-python-pygments: for syntax highlighting
+(58/63) installing mingw-w64-x86_64-libgccjit                [###############################] 100%
+(59/63) installing mingw-w64-x86_64-libmangle-git            [###############################] 100%
+(60/63) installing mingw-w64-x86_64-make                     [###############################] 100%
+(61/63) installing mingw-w64-x86_64-pkgconf                  [###############################] 100%
+(62/63) installing mingw-w64-x86_64-tools-git                [###############################] 100%
+(63/63) installing mingw-w64-x86_64-winstorecompat-git       [###############################] 100%
+:: Running post-transaction hooks...
+(1/1) Updating the info directory file...
+
+# ls /mingw64/bin
+2to3                     libcrypto-1_1-x64.dll   pydoc3
+2to3-3.10                libexpat-1.dll          pydoc3.10
+addr2line.exe            libffi-8.dll            python-config
+ar.exe                   libformw6.dll           python.exe
+as.exe                   libgcc_s_seh-1.dll      python3-config
+asn1Coding.exe           libgccjit-0.dll         python3.10-config
+asn1Decoding.exe         libgettextlib-0-21.dll  python3.10.exe
+asn1Parser.exe           libgettextpo-0.dll      python3.exe
+autopoint                libgettextsrc-0-21.dll  python3w.exe
+bunzip2.exe              libgfortran-5.dll       pythonw.exe
+bzcat.exe                libgmp-10.dll           pzstd.exe
+bzcmp                    libgmpxx-4.dll          ranlib.exe
+bzdiff                   libgnarl-12.dll         readelf.exe
+bzegrep                  libgnat-12.dll          recode-sr-latin.exe
+bzfgrep                  libgomp-1.dll           size.exe
+bzgrep                   libhistory8.dll         sqldiff.exe
+bzip2.exe                libiconv-2.dll          sqlite3.exe
+bzip2recover.exe         libintl-8.dll           sqlite3_analyzer.exe
+bzless                   libisl-23.dll           sqlite3_analyzer.sh
+bzmore                   liblzma-5.dll           strings.exe
+c++.exe                  libmenuw6.dll           strip.exe
+c++filt.exe              libmpdec++-2.dll        tcl86.dll
+cc.exe                   libmpdec-2.dll          tclsh.exe
+cpp.exe                  libncurses++w6.dll      tclsh86.exe
+dbhash.exe               libncursesw6.dll        tk86.dll
+dlltool.exe              libobjc-4.dll           trust.exe
+dllwrap.exe              libp11-kit-0.dll        unxz.exe
+elfedit.exe              libpanelw6.dll          update-ca-trust
+envsubst.exe             libpkgconf-3.dll        widl.exe
+g++.exe                  libpython3.10.dll       windmc.exe
+gcc-ar.exe               libquadmath-0.dll       windres.exe
+gcc-nm.exe               libreadline8.dll        wish.exe
+gcc-ranlib.exe           libsqlite3-0.dll        wish86.exe
+gcc.exe                  libssl-1_1-x64.dll      x86_64-w64-mingw32-agrep.exe
+gcov-tool.exe            libssp-0.dll            x86_64-w64-mingw32-c++.exe
+gcov.exe                 libstdc++-6.dll         x86_64-w64-mingw32-captoinfo.exe
+gdb-add-index            libsystre-0.dll         x86_64-w64-mingw32-cc.exe
+gdb-multiarch.exe        libtasn1-6.dll          x86_64-w64-mingw32-clear.exe
+gdb.exe                  libtermcap-0.dll        x86_64-w64-mingw32-g++.exe
+gdbserver-multiarch.exe  libtre-5.dll            x86_64-w64-mingw32-gcc-12.2.0.exe
+gdbserver.exe            libwinpthread-1.dll     x86_64-w64-mingw32-gcc-ar.exe
+gendef.exe               libxxhash.dll           x86_64-w64-mingw32-gcc-nm.exe
+genidl.exe               libzstd.dll             x86_64-w64-mingw32-gcc-ranlib.exe
+genlib.exe               lzmadec.exe             x86_64-w64-mingw32-gcc.exe
+genpeimg.exe             lzmainfo.exe            x86_64-w64-mingw32-gfortran.exe
+gettext.exe              mingw32-make.exe        x86_64-w64-mingw32-infocmp.exe
+gettext.sh               msgattrib.exe           x86_64-w64-mingw32-infotocap.exe
+gettextize               msgcat.exe              x86_64-w64-mingw32-pkg-config.exe
+gfortran.exe             msgcmp.exe              x86_64-w64-mingw32-pkgconf.exe
+gnat.exe                 msgcomm.exe             x86_64-w64-mingw32-reset.exe
+gnatbind.exe             msgconv.exe             x86_64-w64-mingw32-tabs.exe
+gnatchop.exe             msgen.exe               x86_64-w64-mingw32-tic.exe
+gnatclean.exe            msgexec.exe             x86_64-w64-mingw32-toe.exe
+gnatdll.exe              msgfilter.exe           x86_64-w64-mingw32-tput.exe
+gnatkr.exe               msgfmt.exe              x86_64-w64-mingw32-tset.exe
+gnatlink.exe             msggrep.exe             xgettext.exe
+gnatls.exe               msginit.exe             xmlwf.exe
+gnatmake.exe             msgmerge.exe            xxhsum.exe
+gnatname.exe             msgunfmt.exe            xz.exe
+gnatprep.exe             msguniq.exe             xzcat.exe
+gprof.exe                ncursesw6-config        xzcmp
+idle                     ngettext.exe            xzdec.exe
+idle3                    nm.exe                  xzdiff
+idle3.10                 objcopy.exe             xzegrep
+ld.bfd.exe               objdump.exe             xzfgrep
+ld.exe                   openssl.exe             xzgrep
+libasprintf-0.dll        p11-kit.exe             xzless
+libatomic-1.dll          pkg-config.exe          xzmore
+libbz2-1.dll             pkgconf.exe             zlib1.dll
+libcharset-1.dll         pydoc                   zstd.exe
+
+# gcc --version
+gcc.exe (Rev6, Built by MSYS2 project) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# g++ --version
+g++.exe (Rev6, Built by MSYS2 project) 12.2.0
+Copyright (C) 2022 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+# gdb --version
+GNU gdb (GDB) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
