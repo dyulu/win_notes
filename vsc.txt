@@ -1,0 +1,47 @@
+https://code.visualstudio.com/
+Visual Studio Code
+
+Runs on Windows, macOS and Linux
+
+Built-in support for JavaScript, TypeScript and Node.js 
+
+Has extensions for other languages and runtimes (such as C++, C#, Java, Python, PHP, Go, .NET)
+
+#### Install VSC for Windows
+Destination location:
+C:\Users\UserName\AppData\Local\Programs\Microsoft VS Code
+
+Start Menu folder:
+      Visual Studio Code
+
+Additional tasks:
+      Additional icons:
+         Create a desktop icon
+      Other:
+         Add "Open with Code" action to Windows Explorer file context menu
+         Add "Open with Code" action to Windows Explorer directory context menu
+         Register Code as an editor for supported file types
+         Add to PATH (requires shell restart)
+
+#### Start VSC in current working directory
+code .
+
+#### C/C++ for Visual Studio Code
+https://code.visualstudio.com/docs/languages/cpp
+
+Add extension: Microsoft C/C++ IntelliSense, debugging, and code browsing
+
+Example: Install MinGW-x64 via MSYS2
+pacman -S --needed base-devel mingw-w64-x86_64-toolchain
+
+Add the MinGW compiler, e.g., C:\msys64\mingw64\bin, to your path
+
+Check your MinGW installation: open a new cmd prompt
+gcc --version
+g++ --version
+gdb --version
+
+#### Python extension for Visual Studio Code
+Include features such as IntelliSense (Pylance), linting, debugging, code navigation, code formatting, refactoring, variable explorer, test explorer, and more!
+
+View => Command Pallete ... => Python: Select Interpreter
