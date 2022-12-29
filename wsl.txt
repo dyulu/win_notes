@@ -1,0 +1,84 @@
+# https://docs.microsoft.com/en-us/windows/wsl/compare-versions
+# WSL: Windows Subsystem for Linux
+# WSL 1: no hardware emulation/virtualization
+# WSL 2: virtualization through a highly optimized subset of Hyper-V features
+#        possibly to run some GUI app by installing an X11 server on Windows host, e.g., VcXsrv or Xming
+#        requires Windows 10 version 1903 or higher, with Build 18362 or higher, for x64 systems or Windows 11
+
+# https://docs.microsoft.com/en-us/windows/wsl/install
+# To check Windows version and build number, select Windows logo key + R, type winver, select OK
+# Update to the latest Windows version by selecting Start > Settings > Windows Update > Check for updates
+# Install WSL command:
+#    Run Windows PowerShell as administrator
+#    At com prompt, type: wsl --install
+# Change the default Linux distribution installed:
+#    See a list of available distribution: wsl --list --online or wsl -l -o
+#    See a list of available distros: wsl --install -d <DistroName>
+#    Install a distribution: wsl --install -d <Distribution Name>
+# Upgrade install:
+#    wsl --update
+# Check which version of WSL you are running:
+#    wsl -l -v
+# Set the default version to WSL 1 or WSL 2 when a new Linux distribution is installed:
+#    wsl --set-default-version <Version#>, replacing <Version#> with either 1 or 2
+
+# https://ubuntu.com/wsl
+# Installation:
+#    Run Windows PowerShell as administrator
+#    At com prompt, type: wsl --install
+#    Restart when installtion completes
+#    Note: to install both WSL and Ubuntu: wsl --install -d ubuntu
+#          virtualization needs to be enabled in BIOS
+#          do the following to keep Ubbuntu up to date: sudo apt update && sudo apt upgrade -y
+#   Customising Ubuntu Terminal with Windows Terminal Preview
+
+# https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support
+# Install Ubuntu on WSL2 on Windows 11 with GUI support:
+#    Windows 11 (build 22000 or higher)
+#    Virtualization enabled
+#    Virtual Machine Platform optional feature is enabled
+#    sudo apt update && sudo apt full-upgrade -y && sudo apt install x11-apps
+#    Check bu running xeyes or xcalc
+
+# Copy and Paste for Linux/WSL Consoles
+#    Windows 10 Insider build #17643
+#    Enable the “Use Ctrl+Shift+C/V as Copy/Paste” option in the Console “Options” properties page
+
+# https://techcommunity.microsoft.com/t5/windows-dev-appconsult/running-wsl-gui-apps-on-windows-10/ba-p/1493242
+# Running WSL GUI Apps on Windows 10:
+# First option: VcXsrv Windows X Server
+#    https://sourceforge.net/projects/vcxsrv/
+#    Important to disable the access control to avoid the permission denied error when trying to run a GUI application
+#    Don't forget to allow VcXsrv in the Windows firewall settings
+#        Windows Security -> Firewall & network protection -> Allow an app through firewall -> make sure VcXsrv has both public and private checked
+#    Set the DISPLAY environment variable on Linux to use the Windows host's IP address as WSL2 and the Windows host are not in the same network device
+#        export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
+#        or: export DISPLAY="`sed -n 's/nameserver //p' /etc/resolv.conf`:0"
+#        or: export DISPLAY=$(ip route|awk '/^default/{print $3}'):0.0
+#    Check env DISPLAY has the Windows Host's IP set: echo $DISPLAY
+#    Include the export DISPLAY cmd at the end of /etc/bash.bashrc file to avoid typing it every time WSL is launched
+#    Create a .xsession file in the user's home directory: echo xfce4-session > ~/.xsession
+#
+# Third option: Kali App
+#    With Kali, you don't have to worry about setting environment variables or starting services
+#    https://www.microsoft.com/store/productId/9PKR34TNCV07
+#    Once installed, after having providing the credentials, run the following command to install Win-KeX to allow running GUI Linux Apps on KALI for Windows
+#        sudo apt update && sudo apt install kali-win-kex
+#    Run the following command to run Kali
+#        kex wstart
+#    Use Win-Kex client to connect to the display given by the above command
+
+# https://sourceforge.net/p/vcxsrv/wiki/Using%20VcXsrv%20Windows%20X%20Server/
+# Create with XLaunch a config-file config.xlaunch:
+#    call xlaunch
+#    follow the instructions: disable the access control, multiwindow, clipboard
+#    save the file, e.g., config.xlaunch, in the same folder of VcXsrv Windows X Server
+# Start in silentmode in commandline with :
+#    Xlaunch.exe -run config.xlaunch
+# Make a shortcut on the Desktop:
+#    Right click with the mouse at the space where you want create the shortcut (e.g. Desktop)
+#    New => Shortcut
+#    Type in the textbox ["C:\the\path\to\VcXsrv\vcxsrv.exe" -multiwindow -clipboard -wgl -run config.xlaunch__]
+#    => [Continue]
+#    setting up the name of the shortcut (as example) [X-Server______]
+#    Finish
