@@ -1,0 +1,112 @@
+###### How To Easily Access BIOS in Windows 11
+------
+    Start menu and go to "Settings"
+    Click on “System”
+    Select “Recovery”
+    Under “Advanced Startup”, select “Restart Now” 
+
+------
+   Click Start button
+   In search bar, search for "Change Advanced Startup Options"
+   Choose "Advanced Startup", click "Restart Now"
+   In blue screen with options:
+       Choose "Troubleshoot"
+              "Advanced Options"
+              "UEFI Firmware Settings"
+              It restarts, press F10 to enter setup
+       Choose "Use a device"
+              "UEFI USB device" if just want to boot from USB
+
+###### How to Create a Bootable Ubuntu USB in Windows
+    Install Rufus: https://rufus.ie/
+        a utility that helps format and create bootable USB flash drives
+    Down Ubuntu ISO from the official Ubuntu download page: https://ubuntu.com/download/desktop
+        ubuntu-22.04.2-desktop-amd64.iso, 2023-02-23 04:13, 4.6G
+    Plug USB drive, at least 8 GB, into Windows computer
+    Launch Rufus and click the “Select” button to select the Ubuntu ISO
+    Set the size for your persistence file: max 5GB in FAT32; Rufus 4.1.2045 allows max of 2GB
+    Configure the partition scheme: GPT for UEFI target system
+
+    Note: A persistent Live USB allows its users to save data changes back to the USB storage device
+          instead of leaving the information in the system RAM
+
+###### How to dual-boot Windows 11 and Linux on your PC
+Prepare to dual-boot Linux:
+    Modern Windows computers come with a feature called Secure Boot
+    Secure Boot can cause issues with a lot of Linux distributions that don't support this feature
+    Ubuntu 12.04.2 LTS will boot and install normally on most PCs with Secure Boot enabled
+
+    To disable Secure Boot:
+        Get into "UEFI Firmware Settings"
+        System Configuration
+        Secure Boot option
+
+Create a partition to dual-boot Linux:
+    Right-click Start button (or press Windows key + X) and choose Disk Management
+    Right-click primary partition (it should be the one labeled as C:) and choose Shrink Volume...
+    Specify the amount of space to remove from the partition
+    The space chosen will be deducted from the partition, and it will be listed as unallocated space
+    Leave it as is and close the window
+
+Install Linux to dual-boot with Windows 11:
+    Get into "Advanced startup"
+    Click Use a device
+    Choose the USB flash drive and PC will boot from it
+    Ubuntu boot menu. Press Enter to boot into Ubuntu
+    To install Linux on your empty partition, click Install Ubuntu
+    Follow the setup experience by choosing your keyboard layout and connecting to Wi-Fi
+    Installation type: Install Ubuntu alongside Windows Boot Manager
+
+Switch between Windows 11 and Linux
+    If your Windows partition is set as the priority in your BIOS settings, you may constantly boot into Windows instead
+    Get into "Advanced startup"
+    System Configuration 
+    Boot options
+    UEFI Boot Order, OS Boot Manager
+
+###### Windowss Bitblocker
+
+BitLocker Drive Encryption is a data protection feature that integrates with the operating system and addresses the threats
+    of data theft or exposure from lost, stolen, or inappropriately decommissioned computers
+
+Trusted Platform Module (TPM) is a hardware component installed in many newer computers by the computer manufacturers
+
+BitLocker provides the maximum protection when used with a TPM version 1.2 or later versions
+
+Turn on/off Bitblocker:
+    Click Start
+    Click Control Panel
+    Click System and Security
+    Click BitLocker Drive Encryption
+
+###### How to disable Windows 10 fast startup
+
+Windows PCs typically operate in a number of Advanced Configuration and Power Interface (ACPI) power states
+
+An S0 power state is when your PC is running and ready to respond to your input
+
+There are a number of sleep states, including S1, S2, and S3
+
+There is also a hybrid sleep state where hibernation is used in tandem with a sleep state
+
+Hibernation is considered an S4 power state
+
+While hibernating, PC will seem like it is completely off, but there will be a saved hibernation file ready to be used to boot
+    back to where it was during last user session
+
+An S5 power state (soft off) is when your PC is shut down and rebooted completely
+    There's no hibernation file and no saved user session
+
+There is also a G3 power state, which is when your PC consumes absolutely no power and is completely turned off
+
+With fast startup enabled, choosing to shut down PC might look like completely shutting things down, but in reality, the PC is
+    entering a mix between a shutdown and hibernation
+
+Disable fast startup:
+    Right-click the Start button
+    Search for Control Panel
+    Click Power Options
+    Click Choose what the power buttons do
+    Click Change settings that are currently unavailable
+    Click Turn on fast startup (recommended) so that the checkmark disappears
+    Click Save changes
